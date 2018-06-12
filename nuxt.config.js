@@ -1,3 +1,5 @@
+const StylelintPlugin = require('stylelint-webpack-plugin')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -32,6 +34,16 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+
+        config.plugins.push(
+          new StylelintPlugin({
+            files: [
+              '**/*.vue',
+              'assets/scss/**/*.scss'
+            ],
+            configFile: './.stylelintrc.dev.js'
+          })
+        )
       }
     }
   },
